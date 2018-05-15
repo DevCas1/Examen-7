@@ -8,14 +8,14 @@
     {
         public List<T> Items = new List<T>();
 
-        public void Add(T thing)
+        public void Add(T item)
         {
-            if (!Items.Contains(thing)) Items.Add(thing);
+            if (!Items.Contains(item)) Items.Add(item);
         }
 
-        public void Remove(T thing)
+        public void Remove(T item)
         {
-            if (Items.Contains(thing)) Items.Remove(thing);
+            if (Items.Contains(item)) Items.Remove(item);
         }
     }
 }

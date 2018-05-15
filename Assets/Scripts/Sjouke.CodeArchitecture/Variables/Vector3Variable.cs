@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Variables/Vector3\tVariable")]
+    [CreateAssetMenu(menuName = "Variables/Vector3\tVariable", order = 0)]
     public sealed class Vector3Variable : ScriptableObject
     {
 #if UNITY_EDITOR
