@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33160794568872394}
   - component: {fileID: 23323665066892102}
   - component: {fileID: 65956949102424558}
+  - component: {fileID: 114102539143217598}
   m_Layer: 0
   m_Name: Epic Card
   m_TagString: Untagged
@@ -96,3 +97,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114102539143217598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056923897514310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5802f07f916690047b7596cc083eb1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardInfo: {fileID: 0}
