@@ -16,13 +16,22 @@ namespace Sjouke.Cards
 
     public sealed class PlayCard : MonoBehaviour
     {
-        public PlayCardInfo CardInfo;
+        [SerializeField] private PlayCardInfo _cardInfo;
+        public PlayCardInfo CardInfo
+        {
+            get { return _cardInfo; }
+            set
+            {
+                _cardInfo = value;
+                UpdateValues();
+            }
+        }
         public CardReference References;
         // A list of Effects
 
-        private void Start() => SetValues();
+        private void Start() => UpdateValues();
 
-        public void SetValues()
+        public void UpdateValues()
         {
             References.NameText.text = CardInfo.name;
             References.DescriptionText.text = CardInfo.Description;

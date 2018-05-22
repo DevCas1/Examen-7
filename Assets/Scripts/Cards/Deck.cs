@@ -1,1 +1,1 @@
-﻿namespace Sjouke.Cards {[UnityEngine.CreateAssetMenu(fileName = "New Deck", menuName = "Runtime Collections/PlayCard\tCollection", order = 4)] public class Deck : CodeArchitecture.RuntimeCollections.RuntimeCollection<PlayCard> { } }
+﻿namespace Sjouke.Cards {[UnityEngine.CreateAssetMenu(fileName = "New Deck", menuName = "Runtime Collections/PlayCard\tCollection", order = 4)] public sealed class Deck : CodeArchitecture.RuntimeCollections.RuntimeCollection<PlayCard> { } }

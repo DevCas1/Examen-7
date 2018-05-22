@@ -9,7 +9,7 @@ public sealed class MenuButtonSelector : MonoBehaviour
     private RaycastHit _hit;
     private MenuButton _button;
 
-    private void FixedUpdate() => CheckForMenuButton();
+    private void Update() => CheckForMenuButton();
 
     private void CheckForMenuButton()
     {
@@ -22,13 +22,16 @@ public sealed class MenuButtonSelector : MonoBehaviour
         }
 
         if (_button && _hit.transform) return;
-        
-        if (_hit.transform == _button?.transform) return;
+
+        if (_button != null)
+        {
+            if (_hit.transform == _button.transform) return;
+        }
 
         var tempButton = _hit.transform.GetComponent<MenuButton>();
 
-        if (tempButton != _button)
-            _button?.OnButtonLeave();
+        if (tempButton != _button && _button != null)
+            _button.OnButtonLeave();
 
         _button = tempButton;
         _button.OnButtonHover();
@@ -38,5 +41,11 @@ public sealed class MenuButtonSelector : MonoBehaviour
     {
         if (_button == null) return;
         _button.OnButtonPressed();
+    }
+
+    public void OnMouseRelease()
+    {
+        if (_button == null) return;
+        _button.OnButtonReleased();
     }
 }

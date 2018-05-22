@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 050c16099a1c04f4c93226bbb3a3f3da, type: 3}
-  m_Name: Batman
+  m_Name: Tirion
   m_EditorClassIdentifier: 
-  Rarity: 2
-  Description: WHERE IS SHE
-  ManaCost: 0
-  Health: 2
-  Damage: 4
-  Artwork: {fileID: 21300000, guid: d825453651915534ba0994afb811cef7, type: 3}
+  Rarity: 0
+  Description: The light shall persevere
+  ManaCost: 1
+  Health: 1
+  Damage: 1
+  Artwork: {fileID: 21300000, guid: 25cef1bb73e99b346a44fba23bed55ea, type: 3}
