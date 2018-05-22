@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Variables/Int\tVariable")]
+    [CreateAssetMenu(menuName = "Variables/Int\tVariable", order = 0)]
     public class IntVariable : ScriptableObject
     {
 #if UNITY_EDITOR

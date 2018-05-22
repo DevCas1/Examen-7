@@ -1,0 +1,73 @@
+using System;
+using System.Linq;
+using UnityEditor.Graphing.Util;
+using UnityEngine;
+
+namespace Sjouke.Cards
+{
+    [Serializable]
+    public sealed class References
+    {
+        public PlayCard[] Cards = new PlayCard[5];
+    }
+
+    [Serializable]
+    public sealed class RandomWeightParams
+    {
+        public CardRarity Rarity;
+        public int Weight;
+    }
+
+    public sealed class CardPackChooser : MonoBehaviour
+    {
+        [Tooltip("The library containing all obtainable cards.")]
+        public CardLibrary AvailableCards;
+        [Tooltip("The library for the received cards to store in.")]
+        public CardLibrary PlayerLibrary;
+        public References References;
+        public RandomWeightParams[] Weights = new RandomWeightParams[Enum.GetValues(typeof(CardRarity)).Length];
+
+        public void GetPack()
+        {
+            var receivedCards = References.Cards;
+            RandomWeightParams[] rarities = new RandomWeightParams[Enum.GetNames(typeof(CardRarity)).Length];
+            for (int index = 0; index < rarities.Length; index++)
+                rarities[index].Rarity = (CardRarity)index; 
+
+            int[] weights = new int[AvailableCards.Items.Count];
+            
+            for (int index = 0; index < weights.Length; index++)
+            {
+                switch(AvailableCards.Items[index].Rarity)
+                {
+
+                }
+                Debug.Log($"Added weight {AvailableCards.Items[index]} with Rarity {AvailableCards.Items[index].Rarity} ({(int)AvailableCards.Items[index].Rarity})");
+            }
+            
+            foreach (var card in receivedCards)
+            {
+                var tempCardInfo = AvailableCards.Items[Mathf.RoundToInt((float)GetWeightedRandom(weights))];
+                card.CardInfo = tempCardInfo;
+                card.gameObject.SetActive(true);
+                if (!PlayerLibrary.Items.Contains(tempCardInfo))
+                    PlayerLibrary.Add(tempCardInfo);
+            }
+        }
+
+        private double GetWeightedRandom(int[] weights)
+        {
+            double total = weights.Sum();
+
+            double randomPoint = UnityEngine.Random.value * total;
+
+            for (int index = 0; index < weights.Length; index++)
+            {
+                if (randomPoint < weights[index]) return index;
+
+                randomPoint -= weights[index];
+            }
+            return weights.Length - 1;
+        }
+    }
+}

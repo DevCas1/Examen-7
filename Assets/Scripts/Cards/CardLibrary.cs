@@ -1,0 +1,1 @@
+﻿namespace Sjouke.Cards {[UnityEngine.CreateAssetMenu(fileName = "New Card Library", menuName = "Runtime Collections/PlayCard\tLibrary", order = 4)] public sealed class CardLibrary : CodeArchitecture.RuntimeCollections.RuntimeCollection<PlayCardInfo> { } }

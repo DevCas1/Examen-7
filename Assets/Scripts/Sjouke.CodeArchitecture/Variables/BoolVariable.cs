@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Variables/Bool\tVariable")]
+    [CreateAssetMenu(menuName = "Variables/Bool\tVariable", order = 0)]
     public class BoolVariable : ScriptableObject
     {
 #if UNITY_EDITOR
