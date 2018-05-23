@@ -8,12 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050c16099a1c04f4c93226bbb3a3f3da, type: 3}
-  m_Name: Batman
+  m_Script: {fileID: 11500000, guid: 8fb87fc1266e7eb4e938b40640fc8d00, type: 3}
+  m_Name: All RARE cards
   m_EditorClassIdentifier: 
-  Rarity: 2
-  Description: WHERE IS SHE
-  ManaCost: 0
-  Health: 2
-  Damage: 4
-  Artwork: {fileID: 21300000, guid: db47bc627e6887741a9e9a2c09c148bb, type: 3}
+  Items:
+  - {fileID: 11400000, guid: 116dabf9d9178fc43b08977616947381, type: 2}
