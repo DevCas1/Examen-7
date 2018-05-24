@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum CardRarity { Common, Rare, Epic }
+public enum CardRarity { Common = 0, Rare = 1, Epic = 2 }
 
 namespace Sjouke.Cards
 {
@@ -13,6 +13,7 @@ namespace Sjouke.Cards
         public int ManaCost;
         public int Health;
         public int Damage;
+        public Sprite CardFront;
         public Sprite Artwork;
     }
 }

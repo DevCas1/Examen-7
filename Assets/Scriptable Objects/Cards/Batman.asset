@@ -16,4 +16,5 @@ MonoBehaviour:
   ManaCost: 0
   Health: 2
   Damage: 4
+  CardFront: {fileID: 21300000, guid: 46d2a5e6ec2ea2347ba55c28fd926bf8, type: 3}
   Artwork: {fileID: 21300000, guid: db47bc627e6887741a9e9a2c09c148bb, type: 3}

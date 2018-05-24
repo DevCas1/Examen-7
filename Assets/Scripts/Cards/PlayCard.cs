@@ -11,6 +11,7 @@ namespace Sjouke.Cards
         public TextMeshPro ManaText;
         public TextMeshPro DamageText;
         public TextMeshPro HealthText;
+        public SpriteRenderer CardFront;
         public SpriteRenderer ArtworkPicture;
     }
 
@@ -38,6 +39,7 @@ namespace Sjouke.Cards
             References.ManaText.text = CardInfo.ManaCost.ToString();
             References.DamageText.text = CardInfo.Damage.ToString();
             References.HealthText.text = CardInfo.Health.ToString();
+            if (CardInfo.CardFront != null) References.CardFront.sprite = CardInfo.CardFront;
             References.ArtworkPicture.sprite = CardInfo.Artwork;
         }
     }

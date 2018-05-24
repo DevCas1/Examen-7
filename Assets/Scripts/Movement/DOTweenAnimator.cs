@@ -51,7 +51,7 @@ namespace Sjouke.Simple.DOTween
 
         public void MoveToTransorm(Transform target) => transform.DOBlendableLocalMoveBy(transform.InverseTransformPoint(target.position) + Settings.TransformMoveOffset, Settings.MoveDuration);
 
-        public void MoveFromCamera(float factor)
+        public void MoveTowardsCamera(float factor)
         {
             try
             {

@@ -13,7 +13,6 @@ namespace Sjouke.Cards
     [Serializable]
     public sealed class Probabilities
     {
-        public CardRarity AssociatedRarity;
         [Tooltip("The 'weight' of this option in the random calculation. A higher value means it is more likely to be chosen.")]
         public int Weight;
     }
