@@ -79,5 +79,7 @@ namespace Sjouke.Cards
             }
             return 0;
         }
+
+        public void HidePacks() { foreach (var card in References.Cards) card.gameObject.SetActive(false); }
     }
 }
