@@ -9,7 +9,7 @@ namespace Sjouke.Cards
     {
         public CardRarity Rarity;
         private new string name;
-        public string Description;
+        [Multiline] public string Description;
         public int ManaCost;
         public int Health;
         public int Damage;

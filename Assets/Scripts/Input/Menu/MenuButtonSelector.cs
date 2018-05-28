@@ -29,8 +29,13 @@ public sealed class MenuButtonSelector : MonoBehaviour
         
         if (tempButton != _button && _button != null)
             _button.OnButtonLeave();
+        
 
-        if (tempButton == null) return;
+        if (tempButton == null)
+        {
+            _button = null;
+            return;
+        }
 
         _button = tempButton;
         _button.OnButtonHover();
