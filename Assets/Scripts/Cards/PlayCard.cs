@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Sjouke.Serialization;
+using UnityEngine;
 using TMPro;
 
 namespace Sjouke.Cards
 {
     [System.Serializable]
-    public sealed class CardReference
+    public class CardReference
     {
         public TextMeshPro NameText;
         public TextMeshPro DescriptionText;
@@ -14,8 +15,8 @@ namespace Sjouke.Cards
         public SpriteRenderer CardFront;
         public SpriteRenderer ArtworkPicture;
     }
-
-    public sealed class PlayCard : MonoBehaviour
+    [System.Serializable]
+    public class PlayCard : MonoBehaviour
     {
         [SerializeField] private PlayCardInfo _cardInfo;
         public PlayCardInfo CardInfo
@@ -29,6 +30,7 @@ namespace Sjouke.Cards
         }
         public CardReference References;
         public UnityEngine.Camera MainCamera;
+        public SaveGameManager SaveGameManager;
         // A list of Effects
 
         private void Start() => UpdateValues();
@@ -63,5 +65,7 @@ namespace Sjouke.Cards
         /// <param name="tolerance">How far should origin face target to return true. (1 for facing target, -1 to face the exact opposite direciton)</param>
         /// <returns></returns>
         private bool IsFacingTarget(Transform origin, Transform target, float tolerance = 0.8f) => Vector3.Dot(origin.transform.forward, target.transform.forward) > tolerance;
+
+        public void SellThisCard() => SaveGameManager.SellCard(CardInfo);
     }
 }
