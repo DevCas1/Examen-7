@@ -51,7 +51,7 @@ namespace Sjouke.Simple.DOTween
 
         public void MoveToTransorm(Transform target) => transform.DOBlendableLocalMoveBy(transform.InverseTransformPoint(target.position) + Settings.TransformMoveOffset, Settings.MoveDuration);
 
-        public void MoveFromCamera(float factor)
+        public void MoveTowardsCamera(float factor)
         {
             try
             {
@@ -66,6 +66,12 @@ namespace Sjouke.Simple.DOTween
         public void ReturnToOrigin() => transform.DOLocalMove(_originalPos, Settings.MoveDuration);
 
         public void Resize(float size) => transform.DOBlendableScaleBy(new Vector3(size, size, size), Settings.ResizeDuration);
+
+        public void ResizeX(float size) => transform.DOBlendableScaleBy(new Vector3(size, 0, 0), Settings.ResizeDuration);
+
+        public void ResizeY(float size) => transform.DOBlendableScaleBy(new Vector3(0, size, 0), Settings.ResizeDuration);
+
+        public void ResizeZ(float size) => transform.DOBlendableScaleBy(new Vector3(0, 0, size), Settings.ResizeDuration);
 
         public void JumpSize() => transform.DOScale(_originalScale + Settings.SizeIncrement, Settings.SizeJumpDuration).OnComplete(() => { ResetSize(); });
 

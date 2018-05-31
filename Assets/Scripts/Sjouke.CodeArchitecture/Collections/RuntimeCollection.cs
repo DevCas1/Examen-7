@@ -4,6 +4,7 @@
     using UnityEngine;
 
     /// <summary>[CreateAssetMenu(menuName = "Runtime Collections/{YourType}\tCollection")]</summary>
+    [System.Serializable]
     public abstract class RuntimeCollection<T> : ScriptableObject 
     {
         public List<T> Items = new List<T>();

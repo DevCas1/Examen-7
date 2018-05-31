@@ -21,17 +21,21 @@ public sealed class MenuButtonSelector : MonoBehaviour
             return;
         }
 
-        if (_button && _hit.transform) return;
+        if (_button == null && _hit.transform == null) return;
+        
+        if (_button != null && _hit.transform == _button.transform) return;
 
-        if (_button != null)
-        {
-            if (_hit.transform == _button.transform) return;
-        }
-
-        var tempButton = _hit.transform.GetComponent<MenuButton>();
-
+        MenuButton tempButton = _hit.transform.GetComponent<MenuButton>();
+        
         if (tempButton != _button && _button != null)
             _button.OnButtonLeave();
+        
+
+        if (tempButton == null)
+        {
+            _button = null;
+            return;
+        }
 
         _button = tempButton;
         _button.OnButtonHover();
