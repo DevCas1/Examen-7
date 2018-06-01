@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Sjouke.Cards;
-using Sjouke.CodeArchitecture.Button;
 using Sjouke.CodeArchitecture.Events;
 using Sjouke.CodeArchitecture.Variables;
 
@@ -33,6 +32,7 @@ namespace Sjouke.Serialization
                 {
                     formatter.Serialize(file, ToJSONSave(save));
                 }
+                Debug.Log("Game saved!");
                 if (OnSave != null) OnSave.Raise();
             }
             catch (Exception e)
@@ -51,7 +51,7 @@ namespace Sjouke.Serialization
                 using (FileStream file = File.Open(Application.persistentDataPath + _saveFileString, FileMode.Open))
                 {
                     Save save = FromJSONSave((string)formatter.Deserialize(file));
-                    playerLibrary.Cards = FromCardData(playerLibrary, save.PlayerLibrary);
+                    playerLibrary.Cards = FromCardData(save.PlayerLibrary);
                     gold.Value = save.Gold;
                 }
                 if (OnLoad != null) OnLoad.Raise();
@@ -82,7 +82,7 @@ namespace Sjouke.Serialization
                 FileStream file = File.Open(Application.persistentDataPath + _saveFileString, FileMode.Open);
                 Save save = FromJSONSave((string)formatter.Deserialize(file));
                 file.Close();
-                playerLibrary.Cards = FromCardData(playerLibrary, save.PlayerLibrary);
+                playerLibrary.Cards = FromCardData(save.PlayerLibrary);
                 gold.Value = save.Gold;
                 if (OnLoad != null) OnLoad.Raise();
             }
@@ -106,7 +106,7 @@ namespace Sjouke.Serialization
             return datas;
         }
 
-        internal List<PlayCardInfo> FromCardData(CardLibrary library, List<CardData> cardDatas)
+        internal List<PlayCardInfo> FromCardData(List<CardData> cardDatas)
         {
             List<PlayCardInfo> datas = new List<PlayCardInfo>();
             foreach (var card in cardDatas)
