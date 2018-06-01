@@ -29,9 +29,10 @@ namespace Sjouke.Serialization
             {
                 Save save = CreateGameSave();
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = File.Create(Application.persistentDataPath + _saveFileString);
-                formatter.Serialize(file, ToJSONSave(save));
-                file.Close();
+                using (FileStream file = File.Create(Application.persistentDataPath + _saveFileString))
+                {
+                    formatter.Serialize(file, ToJSONSave(save));
+                }
                 if (OnSave != null) OnSave.Raise();
             }
             catch (Exception e)
@@ -47,11 +48,12 @@ namespace Sjouke.Serialization
             try
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + _saveFileString, FileMode.Open);
-                Save save = FromJSONSave((string)formatter.Deserialize(file));
-                file.Close();
-                playerLibrary.Cards = FromCardData(playerLibrary, save.PlayerLibrary);
-                gold.Value = save.Gold;
+                using (FileStream file = File.Open(Application.persistentDataPath + _saveFileString, FileMode.Open))
+                {
+                    Save save = FromJSONSave((string)formatter.Deserialize(file));
+                    playerLibrary.Cards = FromCardData(playerLibrary, save.PlayerLibrary);
+                    gold.Value = save.Gold;
+                }
                 if (OnLoad != null) OnLoad.Raise();
             }
             catch
