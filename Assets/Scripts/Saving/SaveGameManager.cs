@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Sjouke.Cards;
-using Sjouke.CodeArchitecture.Button;
 using Sjouke.CodeArchitecture.Events;
 using Sjouke.CodeArchitecture.Variables;
 
@@ -33,6 +32,7 @@ namespace Sjouke.Serialization
                 {
                     formatter.Serialize(file, ToJSONSave(save));
                 }
+                Debug.Log("Game saved!");
                 if (OnSave != null) OnSave.Raise();
             }
             catch (Exception e)

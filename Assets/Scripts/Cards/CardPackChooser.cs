@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Sjouke.CodeArchitecture.Variables;
+using Sjouke.Serialization;
 using UnityEngine;
 
 namespace Sjouke.Cards
@@ -10,6 +11,7 @@ namespace Sjouke.Cards
     {
         public PlayCard[] Cards = new PlayCard[5];
         public MonoBehaviour Buybutton;
+        public SaveGameManager GameSaver;
     }
 
     [Serializable]
@@ -74,6 +76,7 @@ namespace Sjouke.Cards
             }
 
             PlayerGold.Value -= BuyCost.Value;
+            References.GameSaver.SaveGame();
             CheckPlayerGold();
         }
 
